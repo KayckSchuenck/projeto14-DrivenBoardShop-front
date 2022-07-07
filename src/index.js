@@ -6,6 +6,8 @@ import { useState } from 'react';
 import './assets/reset.css'
 import './assets/style.css'
 
+import TelaInicial from './pages/TelaInicial';
+
 
 
 function App(){
@@ -14,12 +16,13 @@ function App(){
         <UserContext.Provider value={{user,setUser}}>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/login-cadastro" element={<TelaLoginCadastro />} />
+                    <Route path='/' element={<TelaInicial />} />
+                    {/* <Route path="/login-cadastro" element={<TelaLoginCadastro />} />
                     <Route path="/telainicial" element={<TelaInicial />} />
                     <Route path="/carrinho" element={<TelaCarrinho />} />
                     <Route path="confirmacao" element={<TelaConfirmacao />} />
                     <Route path="/produtos/:idProduto" element={<TelaProduto />} />
-                    <Route path="/categorias/:categoria" element={<TelaProduto />} />
+                    <Route path="/categorias/:categoria" element={<TelaProduto />} /> */}
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider>
