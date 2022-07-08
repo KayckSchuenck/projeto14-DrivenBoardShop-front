@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import NavBar from "../components/NavBar.js";
 import Header from "../components/Header.js"
+import Main from "../components/Main.js";
 
 
 export default function TelaInicial(){
@@ -10,7 +11,7 @@ export default function TelaInicial(){
 
             <NavBar />
             <Header />
-           {/*  <Main /> */}
+            <Main />
         
         </Container>
     );

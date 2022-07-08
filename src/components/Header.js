@@ -15,6 +15,8 @@ const Container = styled.div`
     justify-content: space-around;
     width: 100vw;
     position: relative;
+    margin-bottom: 1rem;
+    
 
     section{
         position: relative;
