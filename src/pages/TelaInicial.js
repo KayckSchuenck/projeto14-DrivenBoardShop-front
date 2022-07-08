@@ -9,7 +9,6 @@ export default function TelaInicial(){
     return(
         <Container>
 
-            <NavBar />
             <Header />
             <Main />
         

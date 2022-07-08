@@ -9,6 +9,7 @@ import './assets/style.css'
 import TelaInicial from './pages/TelaInicial';
 import TelaLoginCadastro from './authScreens/telalogincadastro';
 import NavBar from './components/NavBar';
+import TelaProduto from './pages/TelaProduto';
 
 function App(){
     const [user,setUser]=useState()
@@ -20,8 +21,9 @@ function App(){
                     <NavBar />
                     <Routes>
                         <Route path="/login-cadastro" element={<TelaLoginCadastro />} />
-                        {/* <Route path="/telainicial" element={<TelaInicial />} />
-                        <Route path="/carrinho" element={<TelaCarrinho />} />
+                         <Route path="/telainicial" element={<TelaInicial />} />
+                         <Route path="/produtos" element={<TelaProduto />} />
+                       {/* <Route path="/carrinho" element={<TelaCarrinho />} />
                         <Route path="confirmacao" element={<TelaConfirmacao />} />
                         <Route path="/produtos/:idProduto" element={<TelaProduto />} />
                         <Route path="/categorias/:categoria" element={<TelaProduto />} /> */}
