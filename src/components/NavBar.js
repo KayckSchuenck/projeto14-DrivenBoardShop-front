@@ -41,6 +41,31 @@ export default function NavBar() {
 }
 
 const Container = styled.nav`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    margin-top: 0.5rem;
+
+    font-family: source sans pro,sans-serif;
+    font-size: 1.4rem;
+    color: #222;
+    text-transform: uppercase;
+    transition: 300ms ease;
+
+    figure{
+       img{
+            border-radius: 50%;
+            width: 5rem;
+            height: 5rem;
+            
+       }
+       span{
+        background-color: #222;
+        color: #fff;
+        padding: 0 0.2rem;
+       }
+    }
     height: 80px;
     display: flex;
     justify-content: space-between;
@@ -63,11 +88,12 @@ const Container = styled.nav`
             width: 5rem;
             height: 5rem;
        }
-
     a{
         text-decoration: none;
         color: #222;
         cursor: pointer;
+        padding: 1.5rem 2rem;
+        transition: 300ms ease;
         padding: 1rem 1.2rem;
         transition: 300ms ease;
         display: flex;

@@ -6,6 +6,7 @@ import { CartContext } from './contexts/cartContext';
 import { useState } from 'react';
 import './assets/reset.css'
 import './assets/style.css'
+import TelaInicial from './pages/TelaInicial';
 import TelaLoginCadastro from './authScreens/telalogincadastro';
 import NavBar from './components/NavBar';
 
@@ -33,4 +34,4 @@ function App(){
 
 ReactDOM.render(
     <App />, document.querySelector('.root')
-  );
+);
