@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function Produto({img, descricao, valor}) {
     return (
         <Container>
-            <a href="#"> <img src={img} alt=""></img></a>
+            <a href="#"> <img src={img} alt="imgagem do produto"></img></a>
 
             <p><a href="#">{descricao}</a></p>
 

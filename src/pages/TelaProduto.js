@@ -1,31 +1,79 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 export default function TelaProduto(){
-    return(
 
+    const {idProduto} = useParams();
+
+    const [qtd, setQtd] = useState(1);
+    const [produto, setProduto] = useState({});
+
+    const Item = {
+        idProduto,
+        qtd
+    }
+
+    function addItemCarrinho(){
+
+        const keys = Object.keys(localStorage);
+       
+        const chaveExiste = keys.find((key)=> key ===`${idProduto}`);
+        
+        if(chaveExiste){
+            const ItemSalvoCarrinho =JSON.parse(localStorage.getItem(`${idProduto}`))
+            const itemAtualizado = {
+                idProduto,
+                qtd:ItemSalvoCarrinho.qtd+qtd
+            }
+            console.log(itemAtualizado);
+            localStorage.setItem(`${idProduto}`, JSON.stringify(itemAtualizado));
+            return;
+        }
+
+        localStorage.setItem(`${idProduto}`, JSON.stringify(Item));
+    }
+
+
+    useEffect(()=>{
+
+        const promise = axios.get(`https://projeto13-back.herokuapp.com/produto/${idProduto}`);
+
+        promise.then((response)=>{
+            setProduto(response.data);
+        })
+
+        promise.catch((err)=>{
+            console.log(err);
+        })
+
+    },[])
+
+    return(
         <Container>
             <Grid1>
-                <img src="https://images.tcdn.com.br/img/img_prod/790379/skate_longboard_owl_sports_monster_speed_357_1_20200629114137.jpg"></img>
+                <img src={produto.imagem} alt="imagem produto"></img>
             </Grid1>
             <Grid2>
                 <Descricao>
-                    SKATE LONGBOARD COMPLETO OWL SPORTS MONSTER SPEED
+                    {produto.descricao}
                 </Descricao>
                 <Preco>
-                    R$ 589,90
+                    R$ {produto.valor}
                 </Preco>
-
+                
                 <Quantidade>
                     <p>Quantidade</p>
-                    <input type="button"  value="+"></input>
-                    <input type="number" value="0"></input>
-                    <input type="button" value="-"></input>
+                    <input type="button" onClick={()=>{setQtd(qtd+1)}}   value="+"></input>
+                    <input type="number" min={1} onChange={(e)=>{setQtd(parseInt(e.target.value))}} value={qtd}></input>
+                    <input type="button" onClick={()=>{qtd > 1?setQtd(qtd-1):setQtd(qtd) }}  value="-"></input>
                 </Quantidade>
 
                 <BotoesConteiner>
-                    <BotaoComprar>comprar</BotaoComprar>
+                    <BotaoComprar >comprar</BotaoComprar>
 
-                    <BotaoAddCarrinho >Adicionar ao carrinho</BotaoAddCarrinho>
+                    <BotaoAddCarrinho onClick={addItemCarrinho} >Adicionar ao carrinho</BotaoAddCarrinho>
                 </BotoesConteiner>
                 
 
@@ -100,6 +148,9 @@ const Quantidade = styled.div`
         justify-content: center;
         align-items: center;
         align-content: center;
+    }
+    input[type=number]::-webkit-inner-spin-button { 
+        -webkit-appearance: none;
     }
 `
 const BotoesConteiner = styled.div`
