@@ -1,15 +1,15 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Produto from "./Produto";
 
-export default function Main() {
+export default function Main({produtos}) {
+
 
     return (
         <Container>
-            <Produto img={'https://images.tcdn.com.br/img/img_prod/789131/shape_skate_maple_vertical_pro_tie_dye_skull_8_12_253_1_08fba829ef4501751578834b7397f125.jpg'} descricao={"Shape de Maple Skate Pills"} valor={"R$ 229,90"}/>
-            <Produto img={'https://images.tcdn.com.br/img/img_prod/789131/shape_skate_maple_vertical_pro_tie_dye_skull_8_12_253_1_08fba829ef4501751578834b7397f125.jpg'} descricao={"Shape de Maple Skate Pills"} valor={"R$ 229,90"}/>
-            <Produto img={'https://images.tcdn.com.br/img/img_prod/789131/shape_skate_maple_vertical_pro_tie_dye_skull_8_12_253_1_08fba829ef4501751578834b7397f125.jpg'} descricao={"Shape de Maple Skate Pills"} valor={"R$ 229,90"}/>
-            <Produto img={'https://images.tcdn.com.br/img/img_prod/789131/shape_skate_maple_vertical_pro_tie_dye_skull_8_12_253_1_08fba829ef4501751578834b7397f125.jpg'} descricao={"Shape de Maple Skate Pills"} valor={"R$ 229,90"}/>
-            <Produto img={'https://images.tcdn.com.br/img/img_prod/789131/shape_skate_maple_vertical_pro_tie_dye_skull_8_12_253_1_08fba829ef4501751578834b7397f125.jpg'} descricao={"Shape de Maple Skate Pills"} valor={"R$ 229,90"}/>
+            { produtos?
+            produtos.map((produto)=>(<Link to={`/produtos/:${produtos._id}`}><Produto key={produtos._id} img={produto.imagem} descricao={produto.descricao} valor={produto.valor}/></Link>)):
+            <></>}
         </Container>
     )
 }

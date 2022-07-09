@@ -1,11 +1,52 @@
+import axios from "axios";
+import { useContext } from "react";
 import styled from "styled-components"
+import { UserContext } from "../contexts/usercontext";
 
 export default function Header() {
+
+    const { setProdutos} = useContext(UserContext);
+
+    function retornarPecas(){
+
+        const promise = axios.get("https://projeto13-back.herokuapp.com/produtos/pecas");
+
+        promise.then((response)=>{
+            setProdutos(response.data);
+        })
+
+        promise.catch((err)=>{
+            console.log(err)
+        })
+    }
+    function retornarLongs(){
+        const promise = axios.get("https://projeto13-back.herokuapp.com/produtos/longs");
+
+        promise.then((response)=>{
+            setProdutos(response.data);
+        })
+
+        promise.catch((err)=>{
+            console.log(err)
+        })
+    }
+    function retornarSkate(){
+        const promise = axios.get("https://projeto13-back.herokuapp.com/produtos/skates");
+
+        promise.then((response)=>{
+            setProdutos(response.data);
+        })
+
+        promise.catch((err)=>{
+            console.log(err)
+        })
+    }
+
     return (
         <Container>
-            <section><img src="https://s2.glbimg.com/8HqPBA7mOv-iJmiRzENHYik9ueo=/0x0:4317x3454/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2019/q/Y/Abb9TySwiZFtnyJoPAfg/homem-skatista-cruiser.jpg" alt=""></img><p>Skate</p></section>
-            <section><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSL4mwQNWAbrUDSnzLhmEAa0YKzdP_I5SDiVzW7beqnau-YUD1KQCGAK6JV2aEfq8Ancc&usqp=CAU" alt=""></img><p>LongBoard</p></section>
-            <section><img src="https://t1.uc.ltmcdn.com/es/posts/4/5/6/trucos_para_mejorar_con_el_skate_20654_600.jpg" alt=""></img><p>Peças</p></section>
+            <section onClick={retornarSkate}><img src="https://s2.glbimg.com/8HqPBA7mOv-iJmiRzENHYik9ueo=/0x0:4317x3454/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2019/q/Y/Abb9TySwiZFtnyJoPAfg/homem-skatista-cruiser.jpg" alt=""></img><p>Skate</p></section>
+            <section onClick={retornarLongs}><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSL4mwQNWAbrUDSnzLhmEAa0YKzdP_I5SDiVzW7beqnau-YUD1KQCGAK6JV2aEfq8Ancc&usqp=CAU" alt=""></img><p>LongBoard</p></section>
+            <section onClick={retornarPecas}><img src="https://t1.uc.ltmcdn.com/es/posts/4/5/6/trucos_para_mejorar_con_el_skate_20654_600.jpg" alt=""></img><p>Peças</p></section>
         </Container>
     )
 }
