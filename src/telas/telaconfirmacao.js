@@ -1,7 +1,10 @@
 import axios from "axios"
 import styled from 'styled-components'
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function TelaConfirmacao(){
+    const navigate=useNavigate()
 
     function clearInputs(){
         return {
@@ -20,7 +23,7 @@ export default function TelaConfirmacao(){
     }
 
     function handleSubmit(e){
-        e.preventDefault
+        e.preventDefault()
         let parser=[]
         const allKeys = Object.keys(localStorage)
         if(allKeys.length>0){
@@ -36,6 +39,8 @@ export default function TelaConfirmacao(){
         .then(()=>{
             alert("Seu pedido foi confirmado")
             localStorage.clear()
+            navigate('/telainicial')
+
         })
         .catch(()=>alert("Erro processando seu pedido, tente novamente"))
     }
@@ -50,7 +55,7 @@ export default function TelaConfirmacao(){
                     <input type="text" placeholder="São Paulo-SP" name="cidade" id='cidade' value={postForm.cidade} onChange={handleForm} required/>
                     <label htmlFor="cep">CEP</label>
                     <input type="text" placeholder="36000-000" name="cep" id='cep' value={postForm.cep} onChange={handleForm} required/>
-                    <button type="submit">Confirmar</button>
+                    <button type="submit">Confirmar o pedido</button>
                 </Form>
         </Form>
         </>

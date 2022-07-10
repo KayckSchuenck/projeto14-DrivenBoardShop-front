@@ -10,6 +10,7 @@ export default function TelaCarrinho(){
     const [produtosCarrinho,setProdutosCarrinho]=useState()
     const {cartItens,setCartItens}=useContext(CartContext)
     const {user}=useContext(UserContext)
+    const navigate=useNavigate()
     let parser=[]
     let allKeys;
 
@@ -24,12 +25,12 @@ export default function TelaCarrinho(){
 
     function emptyCart(){
         localStorage.clear()
-        useNavigate('/confirmacao')
+        navigate('/confirmacao')
     }
 
     function checkout(){
-        if(user.token) useNavigate('/confirmacao')
-        else useNavigate('/login-cadastro')
+        if(user.token) navigate('/confirmacao')
+        else navigate('/login-cadastro')
     }
    
     useEffect(()=>{
