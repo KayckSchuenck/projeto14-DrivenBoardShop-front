@@ -8,7 +8,7 @@ export default function Main({produtos}) {
     return (
         <Container>
             { produtos?
-            produtos.map((produto)=>(<Link to={`/produtos/:${produtos._id}`}><Produto key={produtos._id} img={produto.imagem} descricao={produto.descricao} valor={produto.valor}/></Link>)):
+            produtos.map((produto)=>(<Link key={produto.idProduto} to={`/produtos/${produto.idProduto}`}><Produto img={produto.imagem} descricao={produto.descricao} valor={produto.valor}/></Link>)):
             <></>}
         </Container>
     )
