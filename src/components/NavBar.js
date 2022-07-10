@@ -3,18 +3,69 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../contexts/cartContext";
 import { UserContext } from "../contexts/usercontext";
+import axios from "axios";
+
 
 export default function NavBar() {
     const {cartItems}=useContext(CartContext)
     const {user}=useContext(UserContext)
+
+    const { setProdutos} = useContext(UserContext);
+
+    function retornarPecas(){
+
+        const promise = axios.get("http://localhost:5000/produtos/pecas");
+
+        promise.then((response)=>{
+            setProdutos(response.data);
+        })
+
+        promise.catch((err)=>{
+            console.log(err)
+        })
+    }
+    function retornarLongs(){
+        const promise = axios.get("http://localhost:5000/produtos/longs");
+
+        promise.then((response)=>{
+            setProdutos(response.data);
+        })
+
+        promise.catch((err)=>{
+            console.log(err)
+        })
+    }
+    function retornarSkate(){
+        const promise = axios.get("http://localhost:5000/produtos/skate");
+
+        promise.then((response)=>{
+            setProdutos(response.data);
+        })
+
+        promise.catch((err)=>{
+            console.log(err)
+        })
+    }
+    function retornarProdutos(){
+        const promise = axios.get("http://localhost:5000/produtos");
+
+        promise.then((response)=>{
+            setProdutos(response.data);
+        })
+
+        promise.catch((err)=>{
+            console.log(err)
+        })
+    }
+
     return (
         <Container>
-            <Link to='telainicial'>
-                <img src="https://i.pinimg.com/originals/9c/07/6e/9c076e9b07ddd9569fbd503c32244a1d.png"/>
+            <Link onClick={retornarProdutos} to='/telainicial'>
+                <img src="https://i.pinimg.com/originals/9c/07/6e/9c076e9b07ddd9569fbd503c32244a1d.png" alt="logo chorao skate park"/>
             </Link >
-            <Link to='/produtos/skates'>Skate</Link>
-            <Link to='/produtos/longs'>LongBoard</Link>
-            <Link to='/produtos/pecas'>Peças</Link>
+            <Link onClick={retornarSkate} to='/telainicial'>Skate</Link>
+            <Link onClick={retornarLongs} to='/telainicial'>LongBoard</Link>
+            <Link onClick={retornarPecas} to='/telainicial'>Peças</Link>
             {(user 
             ?   <>
                 `Olá ${user.name}`

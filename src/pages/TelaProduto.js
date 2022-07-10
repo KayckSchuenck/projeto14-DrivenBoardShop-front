@@ -27,7 +27,7 @@ export default function TelaProduto(){
                 idProduto,
                 qtd:ItemSalvoCarrinho.qtd+qtd
             }
-            console.log(itemAtualizado);
+            
             localStorage.setItem(`${idProduto}`, JSON.stringify(itemAtualizado));
             return;
         }
@@ -38,7 +38,7 @@ export default function TelaProduto(){
 
     useEffect(()=>{
 
-        const promise = axios.get(`https://projeto13-back.herokuapp.com/produto/${idProduto}`);
+        const promise = axios.get(`http://localhost:5000/produtos/${idProduto}`);
 
         promise.then((response)=>{
             setProduto(response.data);
@@ -49,6 +49,7 @@ export default function TelaProduto(){
         })
 
     },[])
+
 
     return(
         <Container>

@@ -3,11 +3,11 @@ import styled from "styled-components";
 export default function Produto({img, descricao, valor}) {
     return (
         <Container>
-            <a href="#"> <img src={img} alt="imgagem do produto"></img></a>
+            <img src={img} alt="imagem do produto"></img>
 
-            <p><a href="#">{descricao}</a></p>
+            <Descricao>{descricao}</Descricao>
 
-            <p>{valor}</p>
+            <Valor>R$ {valor.toFixed(2)}</Valor>
         </Container>
     )
 }
@@ -27,15 +27,28 @@ const Container = styled.div`
         height: 24rem;
         width: 12rem;
     }
-        p{
-            overflow: hidden;
-            text-overflow: ellipsis;
-            align-items: center;
-        }
-        a{
-            overflow: hidden;
-            text-overflow: ellipsis;
-            align-items: center;
-            cursor: pointer;
-        }
+
+ 
+    img{
+        box-sizing: border-box;
+        height: 12rem
+    }
+    
+`
+const Valor = styled.p`
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-items: center;
+    font-weight: 700;
+    
+    color: #222;
+`
+const Descricao = styled.p`
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-items: center;
+    font-weight: 400;
+    color: #222;
+    color: #999;
 `
