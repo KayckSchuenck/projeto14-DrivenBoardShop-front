@@ -68,22 +68,22 @@ export default function NavBar() {
             <Link onClick={retornarPecas} to='/telainicial'>Peças</Link>
             {(user 
             ?   <>
-                `Olá ${user.name}`
+                `Olá ${user.name.split(' ',1)}`
                 <Link to='/tela-inicial'>
+                <ion-icon name="person-circle-outline"></ion-icon>
                 Logout
                 </Link>
                 </>
             :   <>
-                <Link to='/login-cadastro'>Cadastre-se</Link>
                 <Link to='/login-cadastro'>
                 <ion-icon name="person-circle-outline"></ion-icon>
-                Login
+                Login/Cadastro
                 </Link>
                 </>
             )}
             <Flex>
             <ion-icon name="cart-outline"></ion-icon>
-            <span>{cartItems}</span> 
+            <span>{cartItems.itens}</span> 
             <Link to='/carrinho'>Carrinho</Link>
             </Flex>
         </Container>
