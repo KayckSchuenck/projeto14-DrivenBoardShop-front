@@ -11,10 +11,9 @@ export default function NavBar() {
     const {user}=useContext(UserContext)
 
     const { setProdutos} = useContext(UserContext);
-
+    
     function retornarCategoria(tipo){
-
-        const promise = axios.get(`https://back-projeto14.herokuapp.com/produtos/${tipo}`);
+        const promise = axios.get(`https://back-projeto14.herokuapp.com/produtos/categorias/${tipo}`);
 
         promise.then((response)=>{
             setProdutos(response.data);
@@ -46,7 +45,7 @@ export default function NavBar() {
                 <img src="https://i.pinimg.com/originals/9c/07/6e/9c076e9b07ddd9569fbd503c32244a1d.png" alt="logo chorao skate park"/>
             </Link >
             <Link onClick={()=>retornarCategoria("skate")} to='/'>Skate</Link>
-            <Link onClick={()=>retornarCategoria("longs")} to='/'>LongBoard</Link>
+            <Link onClick={()=>retornarCategoria("longboard")} to='/'>LongBoard</Link>
             <Link onClick={()=>retornarCategoria("pecas")} to='/'>Peças</Link>
             {(user 
             ?   <>

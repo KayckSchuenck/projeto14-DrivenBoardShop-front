@@ -3,11 +3,10 @@ import styled from "styled-components";
 export default function Footer(){
     return(
         <Container>
-            <a href="https://github.com/KayckSchuenck">Feito por Kayck</a>
-            <a href="https://github.com/perseu120">Feito por Josimar</a>
-            <a href="https://www.driven.com.br/sobre-nos">Sobre nos</a>
-            <a href="https://page.driven.com.br/inscricoes?utm_source=site">fale conosco (xx) x xxxx-xxxxx</a>
-            <a href="https://www.driven.com.br/">BootCamp Driven FullStack</a>
+            <a href="#">Feito por Kayck e Josimar</a>
+            <a href="https://github.com/KayckSchuenck" target="_blank">Sobre nos</a>
+            <a href="https://page.driven.com.br/inscricoes?utm_source=site" target="_blank">fale conosco (00) 0 0000-0000</a>
+            <a href="https://www.driven.com.br/" target="_blank">BootCamp Driven FullStack</a>
         </Container>
     );
 }
@@ -25,4 +24,7 @@ const Container = styled.footer`
     color: #222;
     text-transform: uppercase;
     background-color: rgb(235, 235, 235);
+    a:visited {
+    color: #222;
+}
 `
