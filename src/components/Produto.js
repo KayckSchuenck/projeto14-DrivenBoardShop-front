@@ -48,6 +48,6 @@ const Descricao = styled.p`
     text-overflow: ellipsis;
     align-items: center;
     font-weight: 400;
-    color: #222;
+    height: 6rem;
     color: #999;
 `
