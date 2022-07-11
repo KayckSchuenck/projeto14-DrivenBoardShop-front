@@ -29,7 +29,6 @@ export default function TelaInicial(){
 
             <Header />
             <Main produtos={produtos} />
-            <footer>feito por Kayck e Josimar</footer>
         
         </Container>
     );
