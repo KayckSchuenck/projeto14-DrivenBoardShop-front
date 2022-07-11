@@ -28,8 +28,7 @@ function App(){
                         <Route path="/" element={<TelaInicial />} />
                         <Route path="/produtos/:idProduto" element={<TelaProduto />} />
                         <Route path="/carrinho" element={<TelaCarrinho />} />
-                        <Route path="confirmacao" element={<TelaConfirmacao />} />
-                        <Route path="/categorias/:categoria" element={<TelaProduto />} />
+                        <Route path="/confirmacao" element={<TelaConfirmacao />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>

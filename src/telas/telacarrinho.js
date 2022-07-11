@@ -35,7 +35,7 @@ export default function TelaCarrinho(){
    
     useEffect(()=>{
         getLocalStorage()
-        const promise=axios.post(`https://projeto13-back.herokuapp.com/produtos`,parser)
+        const promise=axios.post(`https://back-projeto14.herokuapp.com/produtos`,parser)
         promise
         .then(elem=>{
             setProdutosCarrinho(elem.data.produtos)

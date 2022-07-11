@@ -12,48 +12,30 @@ export default function NavBar() {
 
     const { setProdutos} = useContext(UserContext);
 
-    function retornarPecas(){
+    function retornarCategoria(tipo){
 
-        const promise = axios.get("http://localhost:5000/produtos/pecas");
-
-        promise.then((response)=>{
-            setProdutos(response.data);
-        })
-
-        promise.catch((err)=>{
-            console.log(err)
-        })
-    }
-    function retornarLongs(){
-        const promise = axios.get("http://localhost:5000/produtos/longs");
+        const promise = axios.get(`https://back-projeto14.herokuapp.com/produtos/${tipo}`);
 
         promise.then((response)=>{
             setProdutos(response.data);
         })
 
         promise.catch((err)=>{
+            alert("Erro ao retornar os produtos, tente novamente")
             console.log(err)
         })
     }
-    function retornarSkate(){
-        const promise = axios.get("http://localhost:5000/produtos/skate");
-
-        promise.then((response)=>{
-            setProdutos(response.data);
-        })
-
-        promise.catch((err)=>{
-            console.log(err)
-        })
-    }
+    
+    
     function retornarProdutos(){
-        const promise = axios.get("http://localhost:5000/produtos");
+        const promise = axios.get("https://back-projeto14.herokuapp.com/produtos");
 
         promise.then((response)=>{
             setProdutos(response.data);
         })
 
         promise.catch((err)=>{
+            alert("Erro ao retornar os produtos, tente novamente")
             console.log(err)
         })
     }
@@ -63,9 +45,9 @@ export default function NavBar() {
             <Link onClick={retornarProdutos} to='/'>
                 <img src="https://i.pinimg.com/originals/9c/07/6e/9c076e9b07ddd9569fbd503c32244a1d.png" alt="logo chorao skate park"/>
             </Link >
-            <Link onClick={retornarSkate} to='/'>Skate</Link>
-            <Link onClick={retornarLongs} to='/'>LongBoard</Link>
-            <Link onClick={retornarPecas} to='/'>Peças</Link>
+            <Link onClick={()=>retornarCategoria("skate")} to='/'>Skate</Link>
+            <Link onClick={()=>retornarCategoria("longs")} to='/'>LongBoard</Link>
+            <Link onClick={()=>retornarCategoria("pecas")} to='/'>Peças</Link>
             {(user 
             ?   <>
                 `Olá ${user.name.split(' ',1)}`
@@ -92,40 +74,22 @@ export default function NavBar() {
 }
 
 const Container = styled.nav`
-    display: flex;
-    width: 100vw;
-    margin-top: 0.5rem;
     height: 80px;
+    display: flex;
     justify-content: space-between;
     align-items: center;    
-    margin-top: 0.5rem;
+    margin: 0.5rem 0;
     font-family: 'Source Sans Pro',sans-serif;
     font-size: 1.2rem;
     color: #222;
     text-transform: uppercase;
     transition: 300ms ease;
-
-    figure{
-       img{
-            border-radius: 50%;
-            width: 5rem;
-            height: 5rem;
-            
-       }
-       span{
-        background-color: #222;
-        color: #fff;
-        padding: 0 0.2rem;
-       }
-    }
-    
     span{
         background-color: #222;
         color: #fff;
         padding: 0 0.2rem;
         margin-right: 2px;
        }
-
     img{
             border-radius: 50%;
             width: 5rem;
@@ -135,9 +99,7 @@ const Container = styled.nav`
         text-decoration: none;
         color: #222;
         cursor: pointer;
-        padding: 1.5rem 2rem;
-        transition: 300ms ease;
-        padding: 1rem 1.2rem;
+        padding: 1rem 1.3rem;
         transition: 300ms ease;
         display: flex;
         align-items: center;
