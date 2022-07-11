@@ -104,6 +104,7 @@ const Flex=styled.div`
         width: 60vw;
         display: flex;
         justify-content: space-between;
+        cursor: pointer;
     }
     
     a{
@@ -121,6 +122,7 @@ color: white;
 height: 50px;
 font-size: 20px;
 font-weight: bold;
+margin-bottom: 33vh;
 `
 
 

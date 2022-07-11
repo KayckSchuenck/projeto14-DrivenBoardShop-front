@@ -16,6 +16,7 @@ const Container = styled.footer`
     display: flex;
     margin-top: 0.5rem;
     height: 80px;
+    padding: 0 5px;
     justify-content: space-between;
     align-items: center;    
     margin-top: 0.5rem;
@@ -27,6 +28,4 @@ const Container = styled.footer`
         color:#222;
         margin-right: 10px;
     }
-    
-    width: calc(100% - 40px)
-`
+    width:100%`
