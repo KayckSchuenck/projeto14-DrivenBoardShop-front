@@ -14,7 +14,7 @@ export default function TelaInicial(){
 
         const promise = axios.get("https://back-projeto14.herokuapp.com/produtos");
 
-        promise.then((response)=>{
+        promise.then(response=>{
             setProdutos(response.data);
         })
 
@@ -26,10 +26,8 @@ export default function TelaInicial(){
 
     return(
         <Container>
-
             <Header />
-            <Main produtos={produtos} />
-        
+            <Main />
         </Container>
     );
 }

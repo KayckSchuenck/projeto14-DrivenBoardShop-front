@@ -6,7 +6,7 @@ export default function Footer(){
             <a href="https://github.com/KayckSchuenck">Feito por Kayck</a>
             <a href="https://github.com/perseu120">Feito por Josimar</a>
             <a href="https://www.driven.com.br/sobre-nos">Sobre nos</a>
-            <a href="https://page.driven.com.br/inscricoes?utm_source=site">fale conosco (xx) x xxxx-xxxxx</a>
+            <a href="https://page.driven.com.br/inscricoes?utm_source=site">Fale conosco (xx) x xxxx-xxxxx</a>
             <a href="https://www.driven.com.br/">BootCamp Driven FullStack</a>
         </Container>
     );
