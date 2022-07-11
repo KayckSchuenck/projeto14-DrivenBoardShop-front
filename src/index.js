@@ -16,7 +16,7 @@ import Footer from './components/Footer';
 
 function App(){
     const [user,setUser]=useState()
-    const [cartItems,setCartItems]=useState({itens:0})
+    const [cartItems,setCartItems]=useState(Object.keys(localStorage).length)
     const [produtos, setProdutos] = useState();
     return (
         <UserContext.Provider value={{user,setUser,produtos,setProdutos}}>

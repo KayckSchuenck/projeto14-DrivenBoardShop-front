@@ -45,7 +45,7 @@ export default function TelaLoginCadastro() {
             userId,
             token
             })
-            navigate('/telainicial')
+            navigate('/')
         })
         promise.catch(erro=>{
             alert(`Erro ${erro.response.status}, tente novamente`);

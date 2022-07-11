@@ -1,18 +1,17 @@
 import axios from "axios";
-import { useEffect, useState,useContext } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { CartContext } from "../contexts/cartContext";
 
 export default function TelaProduto(){
-    const {cartItems,setCartItems}=useContext(CartContext)
+
     const {idProduto} = useParams();
 
     const [qtd, setQtd] = useState(1);
     const [produto, setProduto] = useState({});
 
     const Item = {
-        idProduto:parseInt(idProduto),
+        idProduto,
         qtd
     }
 
@@ -20,12 +19,12 @@ export default function TelaProduto(){
 
         const keys = Object.keys(localStorage);
        
-        const chaveExiste = keys.find((key)=> key ===`${idProduto}`);
+        const chaveExiste = keys.find(key=> key ===`${idProduto}`);
         
         if(chaveExiste){
             const ItemSalvoCarrinho =JSON.parse(localStorage.getItem(`${idProduto}`))
             const itemAtualizado = {
-                idProduto:parseInt(idProduto),
+                idProduto,
                 qtd:ItemSalvoCarrinho.qtd+qtd
             }
             
@@ -34,7 +33,6 @@ export default function TelaProduto(){
         }
 
         localStorage.setItem(`${idProduto}`, JSON.stringify(Item));
-        setCartItems(cartItems+1)
     }
 
 
@@ -68,13 +66,15 @@ export default function TelaProduto(){
                 
                 <Quantidade>
                     <p>Quantidade</p>
-                    <input type="button" onClick={()=>{qtd > 1?setQtd(qtd-1):setQtd(qtd) }}  value="-"></input>
-                    <input type="number" min={1} onChange={(e)=>{setQtd(parseInt(e.target.value))}} value={qtd}></input>
                     <input type="button" onClick={()=>{setQtd(qtd+1)}}   value="+"></input>
+                    <input type="number" min={1} onChange={(e)=>{setQtd(parseInt(e.target.value))}} value={qtd}></input>
+                    <input type="button" onClick={()=>{qtd > 1?setQtd(qtd-1):setQtd(qtd) }}  value="-"></input>
                 </Quantidade>
 
                 <BotoesConteiner>
-                    <BotaoComprar onClick={addItemCarrinho} >Adicionar ao carrinho</BotaoComprar>
+                    <BotaoComprar >comprar</BotaoComprar>
+
+                    <BotaoAddCarrinho onClick={addItemCarrinho} >Adicionar ao carrinho</BotaoAddCarrinho>
                 </BotoesConteiner>
                 
 
@@ -138,8 +138,9 @@ const Quantidade = styled.div`
 
     p{
         font-size: 16px;
+        box-sizing: border-box;
+        font-family: source sans pro,sans-serif;
         color: #222;
-        margin-right: 10px;
     }
 
     input{
@@ -172,4 +173,17 @@ const BotaoComprar = styled.button`
     background-color: #222;
     color: #f1aa00;
     margin-bottom: 1rem;
+`
+const BotaoAddCarrinho = styled.button`
+    font-weight: 400;
+    text-align: center;
+    padding: 1.25rem 0;
+    text-transform: uppercase;
+    font-size: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ebebeb;
+    color: #707070;
 `

@@ -50,7 +50,7 @@ export default function NavBar() {
             <Link onClick={()=>retornarCategoria("pecas")} to='/'>Peças</Link>
             {(user 
             ?   <>
-                `Olá ${user.name.split(' ',1)}`
+                Olá ${user.name.split(' ',1)}
                 <Link to='/tela-inicial'>
                 <ion-icon name="person-circle-outline"></ion-icon>
                 Logout
@@ -65,7 +65,7 @@ export default function NavBar() {
             )}
             <Flex>
             <ion-icon name="cart-outline"></ion-icon>
-            <span>{cartItems.itens}</span> 
+            <span>{cartItems}</span> 
             <Link to='/carrinho'>Carrinho</Link>
             </Flex>
         </Container>
