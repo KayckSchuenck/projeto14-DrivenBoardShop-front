@@ -16,7 +16,7 @@ import TelaProduto from './pages/TelaProduto';
 function App(){
     const [user,setUser]=useState()
     const [cartItems,setCartItems]=useState({itens:0})
-    const [produtos, setProdutos] = useState([]);
+    const [produtos, setProdutos] = useState();
     return (
         <UserContext.Provider value={{user,setUser,produtos,setProdutos}}>
             <CartContext.Provider value={{cartItems,setCartItems}}>

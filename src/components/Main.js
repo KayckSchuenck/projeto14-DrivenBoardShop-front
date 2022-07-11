@@ -3,13 +3,12 @@ import styled from "styled-components";
 import Produto from "./Produto";
 
 export default function Main({produtos}) {
-
-
     return (
         <Container>
-            { produtos?
-            produtos.map((produto)=>(<Link key={produto.idProduto} to={`/produtos/${produto.idProduto}`}><Produto img={produto.imagem} descricao={produto.descricao} valor={produto.valor}/></Link>)):
-            <></>}
+            { produtos ?
+            produtos.map(produto=>{
+            <Link key={produto.idProduto} to={`/produtos/${produto.idProduto}`}><Produto img={produto.imagem} descricao={produto.descricao} valor={produto.valor}/></Link>}):
+            <h1>Loading</h1>}
         </Container>
     )
 }

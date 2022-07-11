@@ -14,7 +14,7 @@ export default function NavBar() {
 
     function retornarCategoria(tipo){
 
-        const promise = axios.get(`https://back-projeto14.herokuapp.com/produtos/${tipo}`);
+        const promise = axios.get(`https://back-projeto14.herokuapp.com/produtos/categorias/${tipo}`);
 
         promise.then((response)=>{
             setProdutos(response.data);

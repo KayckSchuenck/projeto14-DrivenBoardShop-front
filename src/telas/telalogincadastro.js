@@ -115,18 +115,18 @@ input{
 }
 button{
     width: 100%;
-    background-color: #37f331;
+    background-color: rgb(45,45,45);
     color: #fff;
     margin: 10px 0 15px;
     padding: 10px;
     text-align: center;
     font-size: 18px;
     border-radius: 3px;
-    border-bottom: 3px solid #28bc23;
+    border-bottom: 3px solid black;
     transition: background-color 300ms ease-in;
 }
 button:hover{
-    background-color: #28bc23;
+    background-color: black;
 }
 `
 const Container=styled.div`
