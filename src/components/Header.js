@@ -9,7 +9,7 @@ export default function Header() {
 
     function retornarPecas(){
 
-        const promise = axios.get("http://localhost:5000/produtos/pecas");
+        const promise = axios.get("https://back-projeto14.herokuapp.com/produtos/pecas");
 
         promise.then((response)=>{
             setProdutos(response.data);
@@ -20,7 +20,7 @@ export default function Header() {
         })
     }
     function retornarLongs(){
-        const promise = axios.get("http://localhost:5000/produtos/longs");
+        const promise = axios.get("https://back-projeto14.herokuapp.com/produtos/longs");
 
         promise.then((response)=>{
             setProdutos(response.data);
@@ -31,7 +31,7 @@ export default function Header() {
         })
     }
     function retornarSkate(){
-        const promise = axios.get("http://localhost:5000/produtos/skate");
+        const promise = axios.get("https://back-projeto14.herokuapp.com/produtos/skate");
 
         promise.then((response)=>{
             setProdutos(response.data);

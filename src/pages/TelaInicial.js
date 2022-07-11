@@ -12,7 +12,7 @@ export default function TelaInicial(){
 
     useEffect(()=>{
 
-        const promise = axios.get("http://localhost:5000/produtos");
+        const promise = axios.get("https://back-projeto14.herokuapp.com/produtos");
 
         promise.then((response)=>{
             setProdutos(response.data);

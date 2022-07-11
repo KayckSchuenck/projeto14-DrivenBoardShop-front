@@ -24,11 +24,10 @@ function App(){
                     <NavBar />
                     <Routes>
                         <Route path="/login-cadastro" element={<TelaLoginCadastro />} />
-                        <Route path="/telainicial" element={<TelaInicial />} />
+                        <Route path="/" element={<TelaInicial />} />
                         <Route path="/produtos/:idProduto" element={<TelaProduto />} />
                         <Route path="/carrinho" element={<TelaCarrinho />} />
-                        <Route path="confirmacao" element={<TelaConfirmacao />} />
-                        <Route path="/categorias/:categoria" element={<TelaProduto />} />
+                        <Route path="/confirmacao" element={<TelaConfirmacao />} />
                     </Routes>
                 </BrowserRouter>
             </CartContext.Provider>

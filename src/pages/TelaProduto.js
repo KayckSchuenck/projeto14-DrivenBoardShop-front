@@ -38,7 +38,7 @@ export default function TelaProduto(){
 
     useEffect(()=>{
 
-        const promise = axios.get(`http://localhost:5000/produtos/${idProduto}`);
+        const promise = axios.get(`https://back-projeto14.herokuapp.com/produtos/${idProduto}`);
 
         promise.then((response)=>{
             setProduto(response.data);

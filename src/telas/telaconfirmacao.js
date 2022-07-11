@@ -1,11 +1,12 @@
 import axios from "axios"
 import styled from 'styled-components'
-import { useState } from "react"
+import { useState,useContext } from "react"
 import { useNavigate } from "react-router-dom"
+import { UserContext } from "../contexts/usercontext"
 
 export default function TelaConfirmacao(){
     const navigate=useNavigate()
-
+    const {user}=useContext(UserContext)
     function clearInputs(){
         return {
             endereco:'',
@@ -35,7 +36,13 @@ export default function TelaConfirmacao(){
             endereco:postForm,
             produtos:parser
         }
-        axios.post(`https://projeto13-back.herokuapp.com/confirmacao`,postConfirmacao)
+        const config={
+            headers: {
+                Authorization:`Bearer ${user.token}`
+            }
+        }
+        
+        axios.post(`https://back-projeto14.herokuapp.com/confirmacao`,postConfirmacao,config)
         .then(()=>{
             alert("Seu pedido foi confirmado")
             localStorage.clear()

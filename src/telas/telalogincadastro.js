@@ -37,7 +37,7 @@ export default function TelaLoginCadastro() {
             email,
             password
         }
-        const promise=axios.post("https://projeto13-back.herokuapp.com/login",loginPost)
+        const promise=axios.post("https://back-projeto14.herokuapp.com/login",loginPost)
         promise.then((element)=>{
             const {name,userId,token}=element.data;
             setUser({
@@ -55,7 +55,7 @@ export default function TelaLoginCadastro() {
 
     function handleSignUpSubmit(e){
         e.preventDefault()
-        const promise=axios.post("https://projeto13-back.herokuapp.com/sign-up",postForm)
+        const promise=axios.post("https://back-projeto14.herokuapp.com/sign-up",postForm)
         setPostForm(clearSignUpInputs)
         promise.then(()=>{
             alert("Conta criada com sucesso")
