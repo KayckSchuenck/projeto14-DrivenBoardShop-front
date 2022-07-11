@@ -3,49 +3,51 @@ import { useState,useEffect,useContext } from 'react/';
 import styled from 'styled-components'
 import { Link,useNavigate } from 'react-router-dom';
 import DisplayCarrinho from '../components/displaycarrinho'
-import { CartContext } from '../contexts/cartContext';
 import { UserContext } from '../contexts/usercontext';
+import { CartContext } from '../contexts/cartContext';
 
 export default function TelaCarrinho(){
     const [produtosCarrinho,setProdutosCarrinho]=useState()
-    const {cartItens,setCartItens}=useContext(CartContext)
+    const [valorTotal,setValorTotal]=useState()
     const {user}=useContext(UserContext)
-    const navigate=useNavigate()
-    let parser=[]
-    let allKeys;
+    const {setCartItems}=useContext(CartContext)
+    const navigate=useNavigate()   
 
     function getLocalStorage(){
-        const allKeys = Object.keys(localStorage)
+       const allKeys = Object.keys(localStorage)
+       const parser=[]
         if(allKeys.length>0){
-            parser=allKeys.map(key=>{
-                return JSON.parse(localStorage.getItem(key))
+            allKeys.map(key=>{
+                parser.push(JSON.parse(localStorage.getItem(key)))
             })
         }
+        return parser
     }
+    
 
     function emptyCart(){
         localStorage.clear()
-        navigate('/confirmacao')
+        setCartItems(0)
+        setProdutosCarrinho()
     }
 
     function checkout(){
-        if(user.token) navigate('/confirmacao')
+        if(user) navigate('/confirmacao')
         else navigate('/login-cadastro')
     }
-   
+    
     useEffect(()=>{
-        getLocalStorage()
-        const promise=axios.post(`https://back-projeto14.herokuapp.com/produtos`,parser)
+        const body=getLocalStorage()
+        const promise=axios.post(`https://back-projeto14.herokuapp.com/produtos`,body)
         promise
         .then(elem=>{
             setProdutosCarrinho(elem.data.produtos)
-            setCartItens({...cartItens,valor:[elem.data.valor]})
-        }) 
+            setValorTotal([elem.data.valor].reduce((a, b) => a + b, 0).toFixed(2))
+        })
         .catch(error=>
             alert(error.response.data)
         )
     },[])
-
     return(
         <>
         <h2>Carrinho de compras</h2>
@@ -58,19 +60,27 @@ export default function TelaCarrinho(){
             </div>
         </Flex>
         {(produtosCarrinho 
-        ?
+        ?   
         produtosCarrinho.map((e,index)=>
-        <DisplayCarrinho nome={e.nome} qtd={parser[index].qtd} valor={e.valor} img={e.img} id={e.idProduto} key={index} storageKeys={allKeys[index]} produtosCarrinho={produtosCarrinho}/>
-        )
+        <DisplayCarrinho 
+        nome={e.nomeProduto} 
+        qtd={JSON.parse(localStorage.getItem(e.idProduto)).qtd} 
+        valor={e.valor} 
+        img={e.imagem} 
+        id={e.idProduto} 
+        setValorTotal={setValorTotal}
+        key={index}
+        index={index}
+        produtosCarrinho={produtosCarrinho}/>)
         : <>Nenhum item no carrinho</>
         )}
         <Flex>
             <div onClick={emptyCart}>Esvaziar carrinho</div>
-            <Link to='/telainicial'>
+            <Link to='/'>
                 Continuar comprando
             </Link>
             <p>
-            {cartItens ? <>Total: R$ {cartItens.valor.reduce((total, entry) => entry.time + total, 0).toFixed(2)}</>: <>R$ 0.00</>}
+            {valorTotal ? <>Total: R$ {valorTotal}</>: <>R$ 0.00</>}   
             </p>
             <button onClick={checkout}>Finalizar compra</button>
         </Flex>
@@ -89,5 +99,6 @@ border-radius: 5px;
 box-shadow: 2px 4px 8px 4px #00000082;
 a{
     text-decoration: none;
+    color:black
 }
 `

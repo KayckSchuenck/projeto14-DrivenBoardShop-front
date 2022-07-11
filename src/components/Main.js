@@ -1,23 +1,26 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 import styled from "styled-components";
+import { UserContext } from "../contexts/usercontext";
 import Produto from "./Produto";
 
-export default function Main({produtos}) {
-
-
-    return (
-        <Container>
-            { produtos?
-            produtos.map((produto)=>(<Link key={produto.idProduto} to={`/produtos/${produto.idProduto}`}><Produto img={produto.imagem} descricao={produto.descricao} valor={produto.valor}/></Link>)):
-            <></>}
-        </Container>
-    )
+export default function Main() {
+    const {produtos}=useContext(UserContext)
+    if (produtos) {
+        return (
+            <Container>
+                {produtos.map(produto => 
+                <Link key={produto.idProduto} to={`/produtos/${produto.idProduto}`}>
+                      <Produto img={produto.imagem} descricao={produto.descricao} valor={produto.valor} />
+                </Link>)}
+            </Container>
+        )
+    } else return <h1>Loading</h1>
 }
 
-const Container = styled.main`
+const Container = styled.div`
     overflow: hidden;
     flex-wrap: wrap;
-    box-sizing: border-box;
     height: 100%;
     width: 100%;
     display: flex;

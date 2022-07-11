@@ -3,33 +3,35 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../contexts/cartContext'
 
-export default function DisplayCarrinho({ nome,qtd,valor,img,key,storageKeys,id,produtosCarrinho }){
-    const {setCartItens}=useContext(CartContext)
+export default function DisplayCarrinho({ nome,qtd,valor,img,index,id,produtosCarrinho,setValorTotal }){
     const [contador,setContador]=useState(qtd)
     const [subtotal,setSubtotal]=useState(valor*qtd)
+    const {cartItems,setCartItems}=useContext(CartContext)
     const myRoute=`/produtos/${id}`
 
     function updateLocal(operacao){
-        const MyItem=localStorage.getItem(storageKeys)
-        JSON.parse(MyItem)
+        const MyItem=JSON.parse(localStorage.getItem(id))
         MyItem.qtd+=operacao
         const MyItemString=JSON.stringify(MyItem)
-        localStorage.setItem(storageKeys,MyItemString)
+        localStorage.setItem(id,MyItemString)
     }
 
     function updateQuantities(operacao){
         setContador(contador+operacao)
         setSubtotal(valor*(contador+operacao))
-        setCartItens(prevState=>{
-            let newValue=[...prevState.valor]
-            newValue[key]=valor*(contador+operacao)
-            return {...prevState,valor:newValue}
+        setValorTotal(prevState=>{
+            prevState=[Number(prevState)]
+            let newValue=[...prevState]
+            newValue[index]=valor*(contador+operacao)
+            console.log(newValue)
+            return newValue.reduce((a, b) => a + b, 0).toFixed(2)
         })
     }
 
     function removeItem(){
-        localStorage.removeItem(storageKeys)
-        produtosCarrinho.splice(key,1)
+        localStorage.removeItem(id)
+        produtosCarrinho.splice(index,1)
+        setCartItems(cartItems-1)
     }
 
     function decrementar(){
