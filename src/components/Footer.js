@@ -27,7 +27,6 @@ const Container = styled.footer`
         color:#222;
         margin-right: 10px;
     }
-    position: fixed;
-    bottom: 0;
+    
     width: calc(100% - 40px)
 `
