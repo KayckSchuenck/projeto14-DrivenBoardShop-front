@@ -3,10 +3,12 @@ import styled from 'styled-components'
 import { useState,useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../contexts/usercontext"
+import { CartContext } from "../contexts/cartContext"
 
 export default function TelaConfirmacao(){
     const navigate=useNavigate()
     const {user}=useContext(UserContext)
+    const {setCartItems}=useContext(CartContext)
     function clearInputs(){
         return {
             endereco:'',
@@ -24,6 +26,10 @@ export default function TelaConfirmacao(){
     }
 
     function handleSubmit(e){
+        if(!user) {
+            alert("Faça seu login")
+            return
+        }
         e.preventDefault()
         let parser=[]
         const allKeys = Object.keys(localStorage)
@@ -46,10 +52,10 @@ export default function TelaConfirmacao(){
         .then(()=>{
             alert("Seu pedido foi confirmado")
             localStorage.clear()
-            navigate('/telainicial')
-
+            setCartItems(0)
+            navigate('/')
         })
-        .catch(()=>alert("Erro processando seu pedido, tente novamente"))
+        .catch((error)=>alert(error.response.data))
     }
     return (
         <>

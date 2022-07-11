@@ -28,13 +28,14 @@ export default function TelaProduto(){
                 idProduto:parseInt(idProduto),
                 qtd:ItemSalvoCarrinho.qtd+qtd
             }
-            
+            alert(`${qtd} item(ns) adicionados ao seu carrinho com sucesso`)
             localStorage.setItem(`${idProduto}`, JSON.stringify(itemAtualizado));
             return;
         }
-
+        alert(`${qtd} item(ns) adicionados ao seu carrinho com sucesso`)
         localStorage.setItem(`${idProduto}`, JSON.stringify(Item));
         setCartItems(cartItems+1)
+        
     }
 
 
