@@ -16,15 +16,18 @@ const Container = styled.footer`
     display: flex;
     margin-top: 0.5rem;
     height: 80px;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;    
     margin-top: 0.5rem;
-    font-family: 'Source Sans Pro',sans-serif;
     font-size: 1.2rem;
     color: #222;
     text-transform: uppercase;
     background-color: rgb(235, 235, 235);
     a{
         color:#222;
+        margin-right: 10px;
     }
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 40px)
 `

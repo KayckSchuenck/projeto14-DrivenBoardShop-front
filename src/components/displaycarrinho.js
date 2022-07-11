@@ -56,14 +56,14 @@ export default function DisplayCarrinho({ nome,qtd,valor,img,index,id,produtosCa
                 </Link>
             </Left>
             <Right>
-                <div>
+                <Block>
                     <Flex>
                         <Caixinha onClick={decrementar}>-</Caixinha>
                         <div>{contador}</div>
                         <Caixinha onClick={incrementar}>+</Caixinha>
+                        <div onClick={removeItem}>Remover Item</div>
                     </Flex>
-                    <div onClick={removeItem}>Remover Item</div>
-                </div>
+                </Block>
                 <span>{`R$ ${valor}`}</span>
                 <span>{`R$ ${subtotal}`}</span>
             </Right>
@@ -75,26 +75,32 @@ const Flex=styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 50%;
+    div:nth-child(even){
+        border-radius: 5px;
+        margin: 0 2px;
+    }
+    div:nth-child(4){
+        margin-left:5px;
+        cursor: pointer;
+    }
+`
 
-`
-const Caixinha=styled.div`
-    height: 10px;
-    width: 10px;
-    background-color: #f1f1f1;
-`
 const Left=styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    width: 150px;
     a{
         display: flex;
         align-items: center;
         justify-content: center;
+        color: black;
         img{
             border: 1px solid #f1f1f1;
-            margin: 10px 10px 10px 20px;
-            width: 75px;
+            border-radius: 5px;
+            margin: 10px;
+            max-width: 75px;
             max-height: 75px;
         }
        
@@ -105,20 +111,24 @@ const Right=styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    width: 65vw;
+    padding: 10px;
     span{
-        width: 4rem;
-        margin: 10px;
+        margin-left: 5px;
     }
-    div{
+
+`
+const Caixinha=styled.div`
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+`
+const Block=styled.div`
+div{
         display: flex;
         justify-content: center;
         align-items: center;
-        align-content: center;
-        padding: 0.5rem 1.25rem;
+        padding: 0.5rem .5rem;
         border: 1px solid #ebebeb;
-        width: fit-content;
-        margin-left: 1rem;
-        font-weight: 400;
     }
 `

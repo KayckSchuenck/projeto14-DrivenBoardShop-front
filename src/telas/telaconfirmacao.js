@@ -41,7 +41,7 @@ export default function TelaConfirmacao(){
                 Authorization:`Bearer ${user.token}`
             }
         }
-        
+        console.log(postConfirmacao)
         axios.post(`https://back-projeto14.herokuapp.com/confirmacao`,postConfirmacao,config)
         .then(()=>{
             alert("Seu pedido foi confirmado")
@@ -53,8 +53,7 @@ export default function TelaConfirmacao(){
     }
     return (
         <>
-        <Form>
-        <h1>Seu endereço</h1>
+        
                 <Form onSubmit={handleSubmit}>
                     <label htmlFor="endereco">Endereço</label>
                     <input type="text" placeholder="Rua das flores, 25" name="endereco" id='endereco' value={postForm.endereco} onChange={handleForm} required/>
@@ -64,7 +63,7 @@ export default function TelaConfirmacao(){
                     <input type="text" placeholder="36000-000" name="cep" id='cep' value={postForm.cep} onChange={handleForm} required/>
                     <button type="submit">Confirmar o pedido</button>
                 </Form>
-        </Form>
+       
         </>
     )
 }
@@ -91,17 +90,17 @@ input{
 }
 button{
     width: 100%;
-    background-color: #37f331;
+    background-color: rgb(45,45,45);
     color: #fff;
     margin: 10px 0 15px;
     padding: 10px;
     text-align: center;
     font-size: 18px;
     border-radius: 3px;
-    border-bottom: 3px solid #28bc23;
+    border-bottom: 3px solid black;
     transition: background-color 300ms ease-in;
 }
 button:hover{
-    background-color: #28bc23;
+    background-color: black;
 }
 `

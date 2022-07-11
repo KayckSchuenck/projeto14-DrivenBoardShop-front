@@ -85,27 +85,30 @@ export default function TelaProduto(){
 
 const Container = styled.div`
     display: flex;
-    margin: 2rem;
-    width: 100wh;
-    div{
-        
-    }
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10vw;
+    height: 50vh;
 `
 const Grid1 = styled.div`
-    box-sizing: border-box;
     img{
-        width: 30rem;
-        height: 30rem;
-
+        width: 33vw;
+        height: 33vh;
     }
+    margin:10px;
+    width: 33vw;
 `
 const Grid2 = styled.div`
-    box-sizing: border-box;
-    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-between;
+    width: 33vw;
+    margin: 10px;
     img{
-        width: 30rem;
-        height: 30rem;
-
+        width: 33vw;
+        height: 33vh;
+        
     }
 `
 const Descricao = styled.h1`
@@ -129,12 +132,10 @@ const Quantidade = styled.div`
     justify-content: center;
     align-items: center;
     align-content: center;
-    padding: 0.5rem 1.25rem;
+    padding: 0.5rem 1rem;
     border: 1px solid #ebebeb;
-    width: fit-content;
-    margin-left: 1rem;
-    font-weight: 400;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;    
+    width: 25vw;
 
     p{
         font-size: 16px;
@@ -143,11 +144,16 @@ const Quantidade = styled.div`
     }
 
     input{
-        width: 2.5rem;
+        width: 4vw;
         text-align: center;
         justify-content: center;
         align-items: center;
         align-content: center;
+    }
+    input[type=number]{
+        border: 1px solid gray;
+        border-radius: 5px;
+        height:24px
     }
     input[type=number]::-webkit-inner-spin-button { 
         -webkit-appearance: none;
@@ -165,7 +171,7 @@ const BotaoComprar = styled.button`
     padding: 1.25rem 0;
     text-transform: uppercase;
     font-size: 16px;
-    width: 100%;
+    width: 25vw;
     display: flex;
     justify-content: center;
     align-items: center;

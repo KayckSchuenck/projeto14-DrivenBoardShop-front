@@ -52,11 +52,11 @@ export default function TelaCarrinho(){
         <>
         <h2>Carrinho de compras</h2>
         <Flex>
-            <span>Produto</span>
+            Produto
             <div>
-                <Quant>Qtde</Quant>
-                <Unidade>Unit</Unidade>
-                <SubTotal>Subtotal</SubTotal>
+                <span>Qtde</span>   
+                <span>Unit</span>
+                <span>Subtotal</span>
             </div>
         </Flex>
         {(produtosCarrinho 
@@ -76,14 +76,15 @@ export default function TelaCarrinho(){
         )}
         <Flex>
             <div onClick={emptyCart}>Esvaziar carrinho</div>
-            <Link to='/'>
-                Continuar comprando
-            </Link>
+            <div>
+                <Link to='/'>
+                    Continuar comprando
+                </Link>
             <p>
             {valorTotal ? <>Total: R$ {valorTotal}</>: <>R$ 0.00</>}   
-            </p>
-            <button onClick={checkout}>Finalizar compra</button>
+            </p></div>
         </Flex>
+        <Button onClick={checkout}>Finalizar compra</Button>
         </>
     )
 }
@@ -97,33 +98,31 @@ const Flex=styled.div`
     font-size: 14px;
     border-radius: 5px;
     box-shadow: 2px 4px 8px 4px #00000082;
-    span{
-        margin-left: 30px;
+    padding: 0 10px;
+    margin-top: 15px;
+    div{
+        width: 60vw;
+        display: flex;
+        justify-content: space-between;
     }
+    
     a{
         text-decoration: none;
-        color:black
+        color:black;
     }
 `
+const Button=styled.button`
+margin-top: 20px;
+left: 40vw;
+position: relative;
+border-radius: 5px;
+background-color: black;
+color: white;
+height: 50px;
+font-size: 20px;
+font-weight: bold;
+`
 
-const Quant = styled.span`
-    position: absolute;
-    top: 120px;
-    right: 470px;
-    font-family: Arial;
-    color: #666;
-`
-const Unidade = styled.span`
-    position: absolute;
-    top: 120px;
-    right: 140px;
-    font-family: Arial;
-    color: #666;
-`
-const SubTotal = styled.span`
-    position: absolute;
-    top: 120px;
-    right: 40px;
-    font-family: Arial;
-    color: #666;
-`
+
+
+
