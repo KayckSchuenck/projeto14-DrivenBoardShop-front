@@ -21,8 +21,8 @@ export default function Header() {
 
     return (
         <Container>
-            <section onClick={()=>retornarCategoria('skates')}><img src="https://s2.glbimg.com/8HqPBA7mOv-iJmiRzENHYik9ueo=/0x0:4317x3454/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2019/q/Y/Abb9TySwiZFtnyJoPAfg/homem-skatista-cruiser.jpg" alt=""></img><p>Skate</p></section>
-            <section onClick={()=>retornarCategoria('longs')}><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSL4mwQNWAbrUDSnzLhmEAa0YKzdP_I5SDiVzW7beqnau-YUD1KQCGAK6JV2aEfq8Ancc&usqp=CAU" alt=""></img><p>LongBoard</p></section>
+            <section onClick={()=>retornarCategoria('skate')}><img src="https://s2.glbimg.com/8HqPBA7mOv-iJmiRzENHYik9ueo=/0x0:4317x3454/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2019/q/Y/Abb9TySwiZFtnyJoPAfg/homem-skatista-cruiser.jpg" alt=""></img><p>Skate</p></section>
+            <section onClick={()=>retornarCategoria('longboard')}><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSL4mwQNWAbrUDSnzLhmEAa0YKzdP_I5SDiVzW7beqnau-YUD1KQCGAK6JV2aEfq8Ancc&usqp=CAU" alt=""></img><p>LongBoard</p></section>
             <section onClick={()=>retornarCategoria('pecas')}><img src="https://http2.mlstatic.com/D_NQ_NP_766529-MLB48988477531_012022-O.jpg" alt=""></img><p>Peças</p></section>
         </Container>
     )

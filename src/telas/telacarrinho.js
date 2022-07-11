@@ -54,9 +54,9 @@ export default function TelaCarrinho(){
         <Flex>
             <span>Produto</span>
             <div>
-                <span>Qtde</span>
-                <span>Unit</span>
-                <span>Subtotal</span>
+                <Quant>Qtde</Quant>
+                <Unidade>Unit</Unidade>
+                <SubTotal>Subtotal</SubTotal>
             </div>
         </Flex>
         {(produtosCarrinho 
@@ -89,16 +89,41 @@ export default function TelaCarrinho(){
 }
 
 const Flex=styled.div`
-display: flex;
-align-items: center;
-justify-content: space-between;
-background-color: #f1f1f1;
-height: 30px;
-font-size: 14px;
-border-radius: 5px;
-box-shadow: 2px 4px 8px 4px #00000082;
-a{
-    text-decoration: none;
-    color:black
-}
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f1f1f1;
+    height: 30px;
+    font-size: 14px;
+    border-radius: 5px;
+    box-shadow: 2px 4px 8px 4px #00000082;
+    span{
+        margin-left: 30px;
+    }
+    a{
+        text-decoration: none;
+        color:black
+    }
+`
+
+const Quant = styled.span`
+    position: absolute;
+    top: 120px;
+    right: 470px;
+    font-family: Arial;
+    color: #666;
+`
+const Unidade = styled.span`
+    position: absolute;
+    top: 120px;
+    right: 140px;
+    font-family: Arial;
+    color: #666;
+`
+const SubTotal = styled.span`
+    position: absolute;
+    top: 120px;
+    right: 40px;
+    font-family: Arial;
+    color: #666;
 `
