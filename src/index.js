@@ -6,12 +6,13 @@ import { CartContext } from './contexts/cartContext';
 import { useState } from 'react';
 import './assets/reset.css'
 import './assets/style.css'
-import TelaInicial from './pages/TelaInicial';
+import TelaInicial from './telas/TelaInicial';
 import TelaLoginCadastro from './telas/telalogincadastro';
 import TelaCarrinho from './telas/telacarrinho'
 import TelaConfirmacao from './telas/telaconfirmacao';
 import NavBar from './components/NavBar';
-import TelaProduto from './pages/TelaProduto';
+import TelaProduto from './telas/TelaProduto';
+import Footer from './components/Footer';
 
 function App(){
     const [user,setUser]=useState()
@@ -29,6 +30,7 @@ function App(){
                         <Route path="/carrinho" element={<TelaCarrinho />} />
                         <Route path="/confirmacao" element={<TelaConfirmacao />} />
                     </Routes>
+                    <Footer />
                 </BrowserRouter>
             </CartContext.Provider>
         </UserContext.Provider>
